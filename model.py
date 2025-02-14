@@ -6,13 +6,20 @@ from sklearn.metrics.pairwise import cosine_similarity
 from flask import Flask, render_template, request
 import requests
 
+credits_link = "https://drive.google.com/file/d//view?usp=drive_link"
+credits_id = "1GLwgTR0Jk3k4wb4C0RtQ1Zj3WRZ9lY0Z"
+credits_url = f"https://drive.google.com/uc?id={credits_id}"
+
+movies_link = "https://drive.google.com/file/d//view?usp=drive_link"
+movies_id = "1Eq3Mzj2Cn87MgXiXft7jyDtycTW80OdF"
+movies_url = f"https://drive.google.com/uc?id={movies_id}"
 
 # Initialize Flask app
 app = Flask(__name__)
 
 # Load the movie and credit data
-movies = pd.read_csv("tmdb_5000_movies.csv")
-cred = pd.read_csv("tmdb_5000_credits.csv")
+movies = pd.read_csv(movies_url)
+cred = pd.read_csv(credits_url)
 
 # Merge movie and credit data
 movies = movies.merge(cred, on="title")
